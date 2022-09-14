@@ -8,6 +8,11 @@ Notice, this is strictly for educational purposes, no infringement of any rights
   - This POC uses a PN532 breakout (http://www.elechouse.com/elechouse/images/product/PN532_module_V3/PN532_%20Manual_V3.pdf) over UART USB adapter
   - `libnfc` installed to provide the `nfc-mfclassic` utility
 - The A key (read key) for sector 15 of the AAU study-card. Can be obtained by way of hardnested mifare classic attack (https://github.com/nfc-tools/miLazyCracker).
+- [MFOC](https://github.com/nfc-tools/mfoc) by Nethemba is required
+- A libnfc config with the correct device specified.
+  - `# cp /etc/nfc/libnfc.conf.sample /etc/nfc/libnfc.conf`
+  - `# sed -i 's/#device.connstring/device.connstring/g' libnfc.conf`
+  - Verify that when running `nfc-list` it states the device is opened
 
 ## Usage
 1. Dump a card `mfoc -k $A15_key -O card.dump`
